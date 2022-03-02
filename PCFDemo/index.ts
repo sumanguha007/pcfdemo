@@ -2,6 +2,9 @@ import {IInputs, IOutputs} from "./generated/ManifestTypes";
 
 export class PCFDemo implements ComponentFramework.StandardControl<IInputs, IOutputs> {
 
+	private _container: HTMLDivElement;
+	private _labelElement: HTMLLabelElement;
+	
 	/**
 	 * Empty constructor.
 	 */
@@ -21,6 +24,11 @@ export class PCFDemo implements ComponentFramework.StandardControl<IInputs, IOut
 	public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container:HTMLDivElement): void
 	{
 		// Add control initialization code
+		this._container = document.createElement("div");
+		this._labelElement = document.createElement("label");
+		this._labelElement.innerHTML = "This is my PCF component";
+		this._container.appendChild(this._labelElement);
+		container.appendChild(this._container);
 	}
 
 
